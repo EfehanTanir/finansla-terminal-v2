@@ -1,0 +1,33 @@
+# render.yaml Configuration for Finansla Terminal V2
+# This file is optional but helpful for Render deployment
+
+services:
+  - type: web
+    name: finansla-terminal-v2
+    env: python
+    plan: free
+    
+    # Build configuration
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run main.py --server.port=10000 --server.address=0.0.0.0
+    
+    # Health check
+    healthCheckPath: /
+    
+    # Envs (set these in Render dashboard for production)
+    envVars:
+      - key: FINNHUB_API_KEY
+        scope: build
+      - key: ALPHA_VANTAGE_API_KEY
+        scope: build
+      - key: DEFAULT_DATA_PROVIDER
+        value: yfinance
+      - key: STREAMLIT_SERVER_HEADLESS
+        value: "true"
+      - key: STREAMLIT_SERVER_PORT
+        value: "10000"
+      - key: STREAMLIT_SERVER_ADDRESS
+        value: "0.0.0.0"
+
+# Auto-deployment from GitHub
+# Render will automatically redeploy when you push to main branch

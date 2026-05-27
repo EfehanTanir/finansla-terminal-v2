@@ -1,6 +1,6 @@
-"""
+""""
 Main Streamlit application - Bloomberg Terminal V2 Replica
-"""
+""""
 
 import streamlit as st
 import pandas as pd
