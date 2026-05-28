@@ -1,32 +1,41 @@
-# Streamlit
-.streamlit/secrets.toml
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+*.egg-info/
+dist/
+build/
 
 # Environment
 .env
-.env.local
-.venv/
-venv/
-ENV/
+*.env
 
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# Cache
-.cache/
-*.cache
+# Streamlit
+.streamlit/secrets.toml
 
 # OS
 .DS_Store
 Thumbs.db
 
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
+logs/
+
+# Cache
+.cache/
+__pycache__/
+
 # Data
-*.db
-*.sqlite
 *.csv
+*.json.bak
