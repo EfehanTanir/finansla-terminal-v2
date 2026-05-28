@@ -6,3 +6,4 @@ requests==2.32.3
 pydeck==0.9.1
 numpy==1.26.4
 finnhub-python
+python-dotenv
