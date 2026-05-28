@@ -1,6 +1,6 @@
-""""
+"""
 Configuration and constants for Finansla Terminal V2
-""""
+"""
 
 import os
 from dotenv import load_dotenv
