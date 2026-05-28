@@ -12,11 +12,21 @@ from config import US_MARKET_TICKERS
 
 st.set_page_config(page_title="US Stocks", page_icon="🇺🇸", layout="wide")
 
+# ==========================================
+# 🧠 MEMORY INITIALIZATION (CRITICAL FOR MULTIPAGE)
+# ==========================================
+if 'data_provider' not in st.session_state:
+    st.session_state.data_provider = "finnhub"
+
+if 'watchlist' not in st.session_state:
+    st.session_state.watchlist = []
+# ==========================================
+
 st.title("🇺🇸 US Stock Market")
 st.caption("NASDAQ, NYSE, S&P 500 - Real-time quotes and analysis")
 
 # Get selected data provider
-data_provider = st.session_state.get('data_provider', 'yfinance')
+data_provider = st.session_state.get('data_provider', 'finnhub')
 client = StockDataClient(data_provider)
 
 st.info(f"📡 Using **{data_provider.upper()}** as data source")

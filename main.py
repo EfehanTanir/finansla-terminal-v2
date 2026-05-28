@@ -49,7 +49,7 @@ st.markdown("""
 
 # Initialize session state
 if 'data_provider' not in st.session_state:
-    st.session_state.data_provider = "yfinance"
+    st.session_state.data_provider = "finnhub" # FORCED DEFAULT
 
 if 'watchlist' not in st.session_state:
     st.session_state.watchlist = []

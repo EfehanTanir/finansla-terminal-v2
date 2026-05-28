@@ -10,10 +10,20 @@ from config import TURKISH_MARKET_TICKERS, FINNHUB_API_KEY
 
 st.set_page_config(page_title="Turkish Stocks", page_icon="🇹🇷", layout="wide")
 
+# ==========================================
+# 🧠 MEMORY INITIALIZATION (CRITICAL FOR MULTIPAGE)
+# ==========================================
+if 'data_provider' not in st.session_state:
+    st.session_state.data_provider = "finnhub"
+
+if 'watchlist' not in st.session_state:
+    st.session_state.watchlist = []
+# ==========================================
+
 st.title("🇹🇷 Turkish Stock Market (Borsa Istanbul)")
 st.caption("BIST 100, BIST 30 - Turkish exchanges")
 
-data_provider = st.session_state.get('data_provider', 'yfinance')
+data_provider = st.session_state.get('data_provider', 'finnhub')
 client = StockDataClient(data_provider)
 
 # Warning for Turkish market support
@@ -23,7 +33,7 @@ if data_provider == "yfinance":
         "(change in sidebar) which has full BIST coverage. Turkish tickers use `.IS` suffix (e.g., AKBNK.IS)"
     )
 elif data_provider == "finnhub" and not FINNHUB_API_KEY:
-    st.warning("⚠️ Finnhub API Key not configured. Set FINNHUB_API_KEY in .env file.")
+    st.warning("⚠️ Finnhub API Key not configured. Set FINNHUB_API_KEY in .env file or cloud variables.")
 
 st.info(f"📡 Using **{data_provider.upper()}** as data source")
 

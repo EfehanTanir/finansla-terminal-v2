@@ -10,10 +10,20 @@ from config import ETF_LIST
 
 st.set_page_config(page_title="ETFs", page_icon="📈", layout="wide")
 
+# ==========================================
+# 🧠 MEMORY INITIALIZATION (CRITICAL FOR MULTIPAGE)
+# ==========================================
+if 'data_provider' not in st.session_state:
+    st.session_state.data_provider = "finnhub"
+
+if 'watchlist' not in st.session_state:
+    st.session_state.watchlist = []
+# ==========================================
+
 st.title("📈 ETF Analysis")
 st.caption("Exchange-Traded Funds - Performance & Holdings")
 
-data_provider = st.session_state.get('data_provider', 'yfinance')
+data_provider = st.session_state.get('data_provider', 'finnhub')
 client = StockDataClient(data_provider)
 
 st.info(f"📡 Using **{data_provider.upper()}** as data source")
