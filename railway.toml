@@ -8,28 +8,3 @@ healthcheckPath = "/"
 healthcheckTimeout = 30
 restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 3
-
-[[services]]
-name = "finansal-terminal"
-
-[services.variables]
-API_PORT = "8000"
-STREAMLIT_PORT = "8501"
-API_URL = "http://localhost:8000"[build]
-builder = "DOCKERFILE"
-dockerfilePath = "Dockerfile"
-
-[deploy]
-startCommand = "./start.sh"
-healthcheckPath = "/"
-healthcheckTimeout = 30
-restartPolicyType = "ON_FAILURE"
-restartPolicyMaxRetries = 3
-
-[[services]]
-name = "finansal-terminal"
-
-[services.variables]
-API_PORT = "8000"
-STREAMLIT_PORT = "8501"
-API_URL = "http://localhost:8000"
